@@ -1,10 +1,10 @@
 import { createClient } from "@supabase/supabase-js";
 import "./style.css";
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
 
 const app = document.querySelector<HTMLDivElement>("#app");
 
@@ -46,4 +46,46 @@ function renderLogin() {
 
           <button type="submit">Sign in</button>
 
-          <p id="login-message" class
+          <p id="login-message" class="message"></p>
+        </form>
+      </div>
+    </div>
+  `;
+
+  const form = document.querySelector<HTMLFormElement>("#login-form");
+  const message =
+    document.querySelector<HTMLParagraphElement>("#login-message");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const email =
+      document.querySelector<HTMLInputElement>("#email")!.value.trim();
+
+    const password =
+      document.querySelector<HTMLInputElement>("#password")!.value;
+
+    if (message) {
+      message.textContent = "Signing in...";
+    }
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      if (message) {
+        message.textContent = error.message;
+      }
+      return;
+    }
+
+    await loadDashboard();
+  });
+}
+
+async function loadDashboard() {
+  const {
+    data: { user },
+ 
