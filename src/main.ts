@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import "./style.css";
+
 
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
