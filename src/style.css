@@ -1,1 +1,70 @@
+* {
+  box-sizing: border-box;
+}
 
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  color: #222;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.1);
+}
+
+.login-card h1 {
+  margin-bottom: 5px;
+}
+
+.login-card input,
+.login-card button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 12px;
+  border-radius: 8px;
+}
+
+.login-card input {
+  border: 1px solid #ccc;
+}
+
+.login-card button {
+  border: 0;
+  background: #222;
+  color: white;
+  cursor: pointer;
+}
+
+.dashboard {
+  min-height: 100vh;
+  padding: 25px;
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.module-grid button {
+  padding: 25px;
+  border: 0;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,.08);
+  }
