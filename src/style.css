@@ -2,69 +2,216 @@
   box-sizing: border-box;
 }
 
+:root {
+  --navy: #0b1220;
+  --navy-light: #111827;
+  --gold: #d4af37;
+  --gold-light: #f0d77a;
+  --white: #ffffff;
+  --text-light: #e5e7eb;
+  --text-muted: #9ca3af;
+  --border: #374151;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  color: #222;
+  background: var(--navy);
+  color: var(--white);
 }
+
+/* LOGIN */
 
 .app-shell {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top, #172033 0%, var(--navy) 55%);
 }
 
 .login-card {
   width: 100%;
-  max-width: 420px;
-  background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,.1);
+  max-width: 430px;
+  padding: 42px 38px;
+  background: rgba(17, 24, 39, 0.96);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 22px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+  text-align: center;
 }
+
+/* LOGE IT logo */
 
 .login-card h1 {
-  margin-bottom: 5px;
+  margin: 0;
+  color: var(--gold);
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: 4px;
 }
 
-.login-card input,
-.login-card button {
-  width: 100%;
-  padding: 13px;
-  margin-top: 12px;
-  border-radius: 8px;
+.login-card > p {
+  margin: 8px 0 35px;
+  color: var(--text-muted);
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.login-card h2 {
+  margin: 0 0 24px;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+/* FORM */
+
+.login-card form {
+  text-align: left;
 }
 
 .login-card input {
-  border: 1px solid #ccc;
+  width: 100%;
+  padding: 15px 16px;
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #0b1220;
+  color: var(--white);
+  font-size: 15px;
+  outline: none;
+}
+
+.login-card input::placeholder {
+  color: #6b7280;
+}
+
+.login-card input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
 }
 
 .login-card button {
-  border: 0;
-  background: #222;
-  color: white;
+  width: 100%;
+  padding: 15px;
+  margin-top: 22px;
+  border: none;
+  border-radius: 10px;
+  background: var(--gold);
+  color: #111827;
+  font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
+  transition: 0.2s ease;
 }
+
+.login-card button:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+#msg {
+  min-height: 20px;
+  margin-top: 15px;
+  color: #fca5a5;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* DASHBOARD */
 
 .dashboard {
   min-height: 100vh;
-  padding: 25px;
+  background: #f4f6f8;
+  color: #111827;
+  padding: 0;
+}
+
+.dashboard header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 28px;
+  background: var(--navy);
+  color: white;
+  border-bottom: 3px solid var(--gold);
+}
+
+.dashboard header h1 {
+  margin: 0;
+  color: var(--gold);
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.dashboard header p {
+  margin: 0;
+  color: var(--text-light);
+}
+
+.dashboard header strong {
+  margin-left: auto;
+  color: var(--gold-light);
+}
+
+.dashboard main {
+  padding: 35px;
+}
+
+.dashboard main h2 {
+  margin-bottom: 5px;
 }
 
 .module-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-  margin-top: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-top: 30px;
 }
 
 .module-grid button {
-  padding: 25px;
-  border: 0;
-  border-radius: 12px;
+  padding: 28px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
   background: white;
-  box-shadow: 0 4px 15px rgba(0,0,0,.08);
+  color: #111827;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+  transition: 0.2s ease;
+}
+
+.module-grid button:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .login-card {
+    padding: 34px 24px;
   }
+
+  .login-card h1 {
+    font-size: 34px;
+  }
+
+  .dashboard header {
+    flex-wrap: wrap;
+  }
+
+  .dashboard header strong {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .dashboard main {
+    padding: 24px 18px;
+  }
+}
